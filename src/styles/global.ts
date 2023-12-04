@@ -1,4 +1,4 @@
-import { globalCss } from "@hilario-ui/react"
+import { globalCss } from '@hilario-ui/react'
 
 export const globalStyles = globalCss({
   '*': {
