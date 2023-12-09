@@ -40,4 +40,4 @@ next-env.d.ts
 .vscode/
 
 # Prisma local database file - TODO: remove from gitignore
-.prisma/dev.db
+prisma/dev.db
