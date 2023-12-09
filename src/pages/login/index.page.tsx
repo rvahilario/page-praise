@@ -48,3 +48,7 @@ export default function Login() {
     </Container>
   )
 }
+
+Login.getLayout = (page: JSX.Element) => {
+  return page
+}
