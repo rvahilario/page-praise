@@ -1,8 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Adapter } from 'next-auth/adapters'
 import { prisma } from '../prisma'
+import { NextApiRequest, NextApiResponse } from 'next'
 
-export function PrismaAdapter(): Adapter {
+export function PrismaAdapter(
+  req: NextApiRequest,
+  res: NextApiResponse,
+): Adapter {
   return {
     async createUser(user) {
       const prismaUser = await prisma.user.create({
