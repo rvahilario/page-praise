@@ -1,3 +1,5 @@
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import { AuthButtons, Container, Hero, LogoContainer } from './styles'
 
 import { Button } from '@/src/components/Button'
@@ -7,6 +9,19 @@ import googleLogo from '@/public/icons/google.svg'
 import rocketLogo from '@/public/icons/rocket.svg'
 
 export default function Login() {
+  const router = useRouter()
+  const callbackUrl = '/'
+
+  const handleSignIn = (provider?: string) => {
+    if (!provider) {
+      router.push(callbackUrl)
+      return
+    }
+    signIn(provider, {
+      callbackUrl,
+    })
+  }
+
   return (
     <Container>
       <LogoContainer />
