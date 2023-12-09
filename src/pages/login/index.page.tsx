@@ -1,9 +1,9 @@
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 import { AuthButtons, Container, Hero, LogoContainer } from './styles'
 
 import { Button } from '@/src/components/Button'
-import Image from 'next/image'
 import githubLogo from '@/public/icons/github.svg'
 import googleLogo from '@/public/icons/google.svg'
 import rocketLogo from '@/public/icons/rocket.svg'
