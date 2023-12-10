@@ -7,6 +7,7 @@ import { globalStyles } from '../styles/global'
 import { DefaultLayout } from '../layouts/DefaultLayout'
 import { QueryClientProvider } from 'react-query'
 import { queryClient } from '../lib/react-query'
+import '@smastrom/react-rating/style.css'
 
 export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode

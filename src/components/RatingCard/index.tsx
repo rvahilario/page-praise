@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Book, Rating, User } from '@prisma/client'
 import Link from 'next/link'
 import {
   BookContent,
   BookDetails,
   BookImage,
+  CompactDetails,
   Container,
   ToggleShowMoreButton,
   UserDetails,
@@ -13,6 +13,7 @@ import { Heading, Text } from '../Typography'
 import { Avatar } from '../Avatar'
 import { useToggleShowMore } from '@/src/hooks/useToggleShowMore'
 import { RatingWithAuthorAndBook } from '@/src/@types/rating'
+import { RatingStars } from '../RatingStars'
 
 type RatingCardProps = {
   rating: RatingWithAuthorAndBook
@@ -31,7 +32,6 @@ export const RatingCard = ({
     isShowingMore,
   } = useToggleShowMore(rating.book.summary, MAX_SUMMARY_LENGTH)
 
-  console.log('rating.book.cover_url', rating.book.cover_url)
   return (
     <Container variant={variant}>
       {variant === 'default' && (
@@ -43,9 +43,13 @@ export const RatingCard = ({
             </Link>
             <div>
               <Text>{rating.user.name}</Text>
-              <Text size="sm" color="gray-400"></Text>
+              <Text size="sm" color="gray-400">
+                Today{/* TODO: implements day distance */}
+              </Text>
             </div>
           </section>
+
+          <RatingStars value={rating.rate} />
         </UserDetails>
       )}
 
@@ -61,6 +65,14 @@ export const RatingCard = ({
         </Link>
         <BookContent>
           <div>
+            {variant === 'compact' && (
+              <CompactDetails>
+                <Text size="sm" color="gray-300">
+                  Today{/* TODO: implements day distance */}
+                </Text>
+                <RatingStars value={rating.rate} />
+              </CompactDetails>
+            )}
             <Heading size={'md'}>{rating.book.name}</Heading>
             <Text size="sm" color="gray-400">
               {rating.book.author}
