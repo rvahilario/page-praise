@@ -6,6 +6,7 @@ import { theme } from '@/src/styles'
 import { SignIn, SignOut } from '@phosphor-icons/react'
 import logoImage from '@/public/logo-full.svg'
 import { Avatar } from '../Avatar'
+import { Text } from '../Typography'
 
 export const Sidebar = () => {
   const { data: session } = useSession()
@@ -27,6 +28,9 @@ export const Sidebar = () => {
         ) : (
           <UserDetails>
             <Avatar src={user.avatar_url || ''} />
+            <Text as="span" size="sm">
+              {user.name}
+            </Text>
             <SignOut
               color={`${theme.colors.danger}`}
               size={20}
