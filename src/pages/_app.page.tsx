@@ -5,6 +5,8 @@ import { SessionProvider } from 'next-auth/react'
 import { Nunito } from 'next/font/google'
 import { globalStyles } from '../styles/global'
 import { DefaultLayout } from '../layouts/DefaultLayout'
+import { QueryClientProvider } from 'react-query'
+import { queryClient } from '../lib/react-query'
 
 export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -25,10 +27,12 @@ export default function App({
     Component.getLayout ?? ((page) => <DefaultLayout>{page}</DefaultLayout>)
 
   return (
-    <SessionProvider session={session}>
-      <div className={`${nunito.className}`}>
-        {getLayout(<Component {...pageProps} />)}
-      </div>
-    </SessionProvider>
+    <QueryClientProvider client={queryClient}>
+      <SessionProvider session={session}>
+        <div className={`${nunito.className}`}>
+          {getLayout(<Component {...pageProps} />)}
+        </div>
+      </SessionProvider>
+    </QueryClientProvider>
   )
 }
