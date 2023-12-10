@@ -51,3 +51,51 @@ export const UserDetails = styled('div', {
     textOverflow: 'ellipsis',
   },
 })
+
+export const Menu = styled('nav', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '$4',
+  height: '100%',
+  width: 128,
+})
+
+export const MenuItem = styled(Link, {
+  textDecoration: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  color: '$gray400',
+  transition: '0.2s',
+
+  svg: {
+    marginRight: '$3',
+  },
+
+  '&:hover': {
+    color: '$gray100',
+  },
+
+  '&::before': {
+    content: '',
+    width: 4,
+    height: 24,
+    background: '$gradient-vertical',
+    marginRight: '$4',
+    borderRadius: '$full',
+    transition: '0.2s',
+    opacity: 0,
+  },
+
+  variants: {
+    active: {
+      true: {
+        color: '$gray100',
+        fontWeight: '$bold',
+
+        '&::before': {
+          opacity: 1,
+        },
+      },
+    },
+  },
+})
