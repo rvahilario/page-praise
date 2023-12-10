@@ -11,7 +11,7 @@ export const Text = styled('p', {
       md: {
         fontSize: '$md',
       },
-      xl: {
+      lg: {
         fontSize: '$xl',
       },
     },
@@ -44,16 +44,16 @@ export const Heading = styled('h2', {
 
   variants: {
     size: {
-      md: {
+      xs: {
         fontSize: '$md',
       },
-      lg: {
+      sm: {
         fontSize: '$lg',
       },
-      xl: {
+      md: {
         fontSize: '$xl',
       },
-      '2xl': {
+      lg: {
         fontSize: '$2xl',
       },
     },

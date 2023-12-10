@@ -1,15 +1,17 @@
 import { PageTitle } from '../components/PageTitle'
 import { ChartLineUp } from '@phosphor-icons/react'
 import { useLatestRatings } from '../hooks/useLatestRatings'
+import { Text } from '../components/Typography'
+import { RatingCard } from '../components/RatingCard'
 
 const HomePage = () => {
-  const { data, isLoading, isError } = useLatestRatings()
+  const { data: ratings, isLoading, isError } = useLatestRatings()
 
   if (isLoading) {
     return <div>Loading...</div>
   }
 
-  if (isError || !data) {
+  if (isError || !ratings) {
     return <div>Error fetching latest ratings.</div>
   }
 
@@ -19,9 +21,13 @@ const HomePage = () => {
         <PageTitle title="Home" icon={<ChartLineUp size={32} />} />
       </div>
       <div>
-        <h2>Latest Ratings</h2>
-        {/* Render your data here */}
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+        <Text size="sm">Latest Ratings</Text>
+
+        <section>
+          {ratings?.map((rating) => (
+            <RatingCard key={rating.id} rating={rating} />
+          ))}
+        </section>
       </div>
     </>
   )

@@ -12,7 +12,9 @@ export const PageTitle = ({ icon, title, ...props }: PageTitleProps) => {
   return (
     <Container {...props}>
       {icon}
-      <Heading as="h1">{title}</Heading>
+      <Heading as="h1" size={'lg'}>
+        {title}
+      </Heading>
     </Container>
   )
 }
