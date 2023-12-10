@@ -25,8 +25,12 @@ export const LogoContainer = styled('div', {
   height: '100%',
   width: '37.375rem',
   borderRadius: '0.625rem',
+  justifyContent: 'center',
+  alignItems: 'center',
 
-  '& img': {},
+  '& img': {
+    height: '3.625rem',
+  },
 })
 
 export const Hero = styled('div', {

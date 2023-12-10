@@ -7,6 +7,7 @@ import { Button } from '@/src/components/Button'
 import githubLogo from '@/public/icons/github.svg'
 import googleLogo from '@/public/icons/google.svg'
 import rocketLogo from '@/public/icons/rocket.svg'
+import fullLogo from '@/public/logo-full.svg'
 
 export default function Login() {
   const router = useRouter()
@@ -24,7 +25,9 @@ export default function Login() {
 
   return (
     <Container>
-      <LogoContainer />
+      <LogoContainer>
+        <Image src={fullLogo} alt="Page praise logo." />
+      </LogoContainer>
 
       <Hero>
         <h1>Welcome!</h1>

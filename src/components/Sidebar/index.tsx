@@ -4,7 +4,7 @@ import { Container, LoginButton, UserDetails } from './styles'
 import { theme } from '@/src/styles'
 
 import { SignIn, SignOut } from '@phosphor-icons/react'
-import logoImage from '@/public/logo-text.svg'
+import logoImage from '@/public/logo-full.svg'
 
 export const Sidebar = () => {
   const { data: session } = useSession()
