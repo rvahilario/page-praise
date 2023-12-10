@@ -1,11 +1,10 @@
-import { useSession } from 'next-auth/react'
+import { PageTitle } from '../components/PageTitle'
+import { ChartLineUp } from '@phosphor-icons/react'
 
 const HomePage = () => {
-  const { data } = useSession()
   return (
     <div>
-      HomePage
-      <p>{JSON.stringify(data)}</p>
+      <PageTitle title="Home" icon={<ChartLineUp size={32} />} />
     </div>
   )
 }
