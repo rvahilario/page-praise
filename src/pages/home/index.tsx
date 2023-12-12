@@ -1,5 +1,5 @@
 import { PageTitle } from '@/src/components/PageTitle'
-import { RatingCard } from '@/src/components/RatingCard'
+import { BookCard } from '@/src/components/BookCard'
 import { Text } from '@/src/components/Typography'
 import { useLatestRatings } from '@/src/hooks/useLatestRatings'
 import { ChartLineUp } from '@phosphor-icons/react'
@@ -33,16 +33,21 @@ export const Home = () => {
           <header>
             <Text size={'sm'}>Your Last Book Rating</Text>
           </header>
-          <RatingCard variant="compact" rating={latestUserRating} />
+          <BookCard rating={latestUserRating} noUser />
         </LatestContainer>
       )}
 
       <Text size="sm">Latest Ratings</Text>
       <RatingsSection>
-        {ratings?.map((rating) => (
-          <RatingCard key={rating.id} rating={rating} />
-        ))}
+        {ratings?.map((rating) => <BookCard key={rating.id} rating={rating} />)}
       </RatingsSection>
+
+      {/* <Text size={'sm'}>Livros populares</Text>
+      <section>
+        {popularBooks?.map((book) => (
+          <BookCard key={`popular-${book.id}`} book={book} size={'md'} />
+        ))}
+      </section> */}
     </Container>
   )
 }

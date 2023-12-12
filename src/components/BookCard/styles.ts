@@ -9,11 +9,11 @@ export const Container = styled('div', {
   flexDirection: 'column',
 
   variants: {
-    variant: {
-      default: {
+    noUser: {
+      false: {
         background: '$gray700',
       },
-      compact: {
+      true: {
         background: '$gray600',
       },
     },

@@ -15,17 +15,14 @@ import { useToggleShowMore } from '@/src/hooks/useToggleShowMore'
 import { RatingWithAuthorAndBook } from '@/src/@types/rating'
 import { RatingStars } from '../RatingStars'
 
-type RatingCardProps = {
+type BookCardProps = {
   rating: RatingWithAuthorAndBook
-  variant?: 'default' | 'compact'
+  noUser?: boolean
 }
 
 const MAX_SUMMARY_LENGTH = 180 // characters
 
-export const RatingCard = ({
-  rating,
-  variant = 'default',
-}: RatingCardProps) => {
+export const BookCard = ({ rating, noUser = false }: BookCardProps) => {
   const {
     text: bookSummary,
     toggleShowMore,
@@ -33,8 +30,8 @@ export const RatingCard = ({
   } = useToggleShowMore(rating.book.summary, MAX_SUMMARY_LENGTH)
 
   return (
-    <Container variant={variant}>
-      {variant === 'default' && (
+    <Container noUser={noUser}>
+      {!noUser && (
         <UserDetails>
           <section>
             {/* TODO: link to profile */}
@@ -48,7 +45,6 @@ export const RatingCard = ({
               </Text>
             </div>
           </section>
-
           <RatingStars value={rating.rate} />
         </UserDetails>
       )}
@@ -65,7 +61,7 @@ export const RatingCard = ({
         </Link>
         <BookContent>
           <div>
-            {variant === 'compact' && (
+            {noUser && (
               <CompactDetails>
                 <Text size="sm" color="gray-300">
                   Today{/* TODO: implements day distance */}
