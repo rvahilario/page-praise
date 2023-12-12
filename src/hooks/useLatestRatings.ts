@@ -1,8 +1,8 @@
-import { RatingWithAuthorAndBook } from '../@types/rating'
+import { RatingWithUserAndBook } from '../@types'
 import { fetchLatestRatings, useQuery, UseQueryResult } from '../api'
 
 export const useLatestRatings = (): UseQueryResult<
-  RatingWithAuthorAndBook[],
+  RatingWithUserAndBook[],
   Error
 > => {
   return useQuery('latestRatings', fetchLatestRatings)

@@ -12,11 +12,11 @@ import {
 import { Heading, Text } from '../Typography'
 import { Avatar } from '../Avatar'
 import { useToggleShowMore } from '@/src/hooks/useToggleShowMore'
-import { RatingWithAuthorAndBook } from '@/src/@types/rating'
+import { RatingWithUserAndBook } from '@/src/@types'
 import { RatingStars } from '../RatingStars'
 
 type BookCardProps = {
-  rating: RatingWithAuthorAndBook
+  rating: RatingWithUserAndBook
   noUser?: boolean
 }
 
