@@ -30,7 +30,7 @@ export const BookCardColumn = ({
   } = useToggleShowMore(book.summary, MAX_SUMMARY_LENGTH)
 
   return (
-    <Container>
+    <Container isCompact={isCompact}>
       <BookDetails isCompact={isCompact}>
         {/* TODO: link to book page */}
         <Link href={`/explore`}>
@@ -44,7 +44,7 @@ export const BookCardColumn = ({
 
         <BookContent>
           <div>
-            <Heading size={'md'}>{book.name}</Heading>
+            <Heading size={isCompact ? 'xs' : 'sm'}>{book.name}</Heading>
             <Text size="sm" color="gray-400">
               {book.author}
             </Text>

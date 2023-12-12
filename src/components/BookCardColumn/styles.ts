@@ -8,6 +8,17 @@ export const Container = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   background: '$gray700',
+
+  variants: {
+    isCompact: {
+      false: {
+        padding: '$6',
+      },
+      true: {
+        padding: '$4 $5',
+      },
+    },
+  },
 })
 
 export const BookDetails = styled('div', {
@@ -45,9 +56,19 @@ export const BookImage = styled(Image, {
 export const BookContent = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  height: '100%',
+  minHeight: '100%',
   padding: '$1 0',
   justifyContent: 'space-between',
+
+  '> div > h2': {
+    display: '-webkit-box',
+    '-webkit-box-orient': 'vertical',
+    maxHeight: '44px',
+    maxWidth: '100%',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    '-webkit-line-clamp': 2,
+  },
 })
 
 export const BookSummary = styled('div', {

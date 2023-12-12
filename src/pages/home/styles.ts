@@ -1,6 +1,6 @@
 import { styled } from '@/src/styles'
 
-export const RatingsSection = styled('section', {
+export const BooksSection = styled('section', {
   display: 'flex',
   flexDirection: 'column',
   gap: '$3',
@@ -12,11 +12,22 @@ export const Container = styled('div', {
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
-  overflow: 'auto',
   paddingBottom: 40,
+  overflow: 'hidden',
+})
 
-  '&::-webkit-scrollbar': {
-    display: 'none',
+export const GridContainer = styled('section', {
+  display: 'grid',
+  height: '100%',
+  gridTemplateColumns: '1fr 308px',
+  gap: 64,
+
+  '> div': {
+    overflow: 'auto',
+
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
   },
 })
 

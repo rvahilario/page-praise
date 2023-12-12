@@ -69,7 +69,7 @@ export const BookCard = ({ rating, noUser = false }: BookCardProps) => {
                 <RatingStars value={rating.rate} />
               </CompactDetails>
             )}
-            <Heading size={'md'}>{rating.book.name}</Heading>
+            <Heading size="sm">{rating.book.name}</Heading>
             <Text size="sm" color="gray-400">
               {rating.book.author}
             </Text>
