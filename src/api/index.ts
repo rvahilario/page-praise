@@ -26,3 +26,12 @@ export const fetchUserLatestRating = async () => {
     throw new Error(`Failed to fetch latest ratings: ${error}`)
   }
 }
+
+export const fetchPopularBooks = async () => {
+  try {
+    const { data } = await api.get('/books/popular')
+    return data
+  } catch (error) {
+    throw new Error(`Failed to fetch popular books: ${error}`)
+  }
+}
