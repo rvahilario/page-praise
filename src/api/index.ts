@@ -27,6 +27,19 @@ export const fetchUserLatestRating = async () => {
   }
 }
 
+export const fetchBooks = async (categoryFilter: string) => {
+  try {
+    const { data } = await api.get('/books', {
+      params: {
+        category: categoryFilter || null,
+      },
+    })
+    return data
+  } catch (error) {
+    throw new Error(`Failed to fetch books: ${error}`)
+  }
+}
+
 export const fetchPopularBooks = async () => {
   try {
     const { data } = await api.get('/books/popular')
