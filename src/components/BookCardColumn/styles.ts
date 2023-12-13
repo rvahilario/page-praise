@@ -8,6 +8,7 @@ export const Container = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   background: '$gray700',
+  position: 'relative',
 
   variants: {
     isCompact: {
@@ -73,4 +74,17 @@ export const ToggleShowMoreButton = styled('button', {
   fontWeight: '$bold',
   marginLeft: '$1',
   cursor: 'pointer',
+})
+
+export const ReadBadge = styled('span', {
+  position: 'absolute',
+  display: 'block',
+  background: '$green300',
+  top: 0,
+  right: 0,
+  color: '$green100',
+  fontWeight: '$bold',
+  fontSize: '$xs',
+  padding: '$1 $3',
+  borderRadius: '0px 4px 0px 4px',
 })

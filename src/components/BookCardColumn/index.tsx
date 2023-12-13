@@ -5,6 +5,7 @@ import {
   BookImage,
   BookSummary,
   Container,
+  ReadBadge,
   ToggleShowMoreButton,
 } from './styles'
 import { Heading, Text } from '../Typography'
@@ -37,6 +38,7 @@ export const BookCardColumn = ({
   isCompact = false,
   imgSize = 'md',
 }: BookCardColumnProps) => {
+  console.log('book', book)
   const {
     text: bookSummary,
     toggleShowMore,
@@ -45,6 +47,7 @@ export const BookCardColumn = ({
 
   return (
     <Container isCompact={isCompact}>
+      {book?.alreadyRead && <ReadBadge>READ</ReadBadge>}
       <BookDetails>
         {/* TODO: link to book page */}
         <Link href={`/explore`}>
