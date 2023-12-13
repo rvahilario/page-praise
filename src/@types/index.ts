@@ -11,5 +11,5 @@ export type RatingWithUserAndBook = Rating &
 
 export type BookWithAvgRating = Book & {
   avgRating: number
-  alreadyReady: boolean
+  alreadyRead: boolean
 }

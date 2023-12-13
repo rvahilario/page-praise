@@ -8,11 +8,13 @@ import {
   LatestContainer,
   BooksSection,
   GridContainer,
+  SectionHeader,
 } from './styles'
 import { useUserLatestRating } from '@/src/hooks/useUserLatestRating'
 import { useSession } from 'next-auth/react'
 import { BookCardColumn } from '@/src/components/BookCardColumn'
 import { usePopularBooks } from '@/src/hooks/usePopularBooks'
+import { LinkNavigation } from '@/src/components/LinkNavigation'
 
 export const Home = () => {
   const { data: session } = useSession()
@@ -40,14 +42,17 @@ export const Home = () => {
         <div>
           {latestUserRating && (
             <LatestContainer>
-              <header>
+              <SectionHeader>
                 <Text size={'sm'}>Your Last Book Rating</Text>
-              </header>
+                <LinkNavigation text="See all" href={`/profile/${userId}`} />
+              </SectionHeader>
               <BookCard rating={latestUserRating} noUser />
             </LatestContainer>
           )}
 
-          <Text size="sm">Latest Ratings</Text>
+          <SectionHeader>
+            <Text size="sm">Latest Ratings</Text>
+          </SectionHeader>
           <BooksSection>
             {ratings?.map((rating) => (
               <BookCard key={rating.id} rating={rating} />
@@ -56,7 +61,10 @@ export const Home = () => {
         </div>
 
         <div>
-          <Text size={'sm'}>Popular Books</Text>
+          <SectionHeader>
+            <Text size={'sm'}>Popular Books</Text>
+            <LinkNavigation text="See all" href={`/explore`} />
+          </SectionHeader>
           <BooksSection>
             {popularBooks?.map((book) => (
               <BookCardColumn

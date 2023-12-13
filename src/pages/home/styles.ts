@@ -35,12 +35,12 @@ export const LatestContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   marginBottom: 40,
+})
 
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: '$4',
-    marginBottom: '$4',
-  },
+export const SectionHeader = styled('header', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: '$4',
+  marginBottom: '$4',
 })
