@@ -11,12 +11,13 @@ import { SearchInput } from '@/src/components/SearchInput'
 import { BookCardColumn } from '@/src/components/BookCardColumn'
 import { ComponentProps } from '@stitches/react'
 import { useBooks } from '@/src/hooks/useBooks'
+import { useCategories } from '@/src/hooks/useCategories'
 
 const Explore = () => {
   const [search, setSearch] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const { data: books } = useBooks(selectedCategory)
-  const categories = []
+  const { data: categories } = useCategories()
 
   const filteredBooks = books?.filter((book) => {
     return (
@@ -43,7 +44,7 @@ const Explore = () => {
 
       <TagsWrapper>
         <Tag
-          active={selectedCategory === null}
+          active={selectedCategory === ''}
           onClick={() => setSelectedCategory('')}
         >
           All

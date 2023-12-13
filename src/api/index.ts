@@ -49,6 +49,15 @@ export const fetchPopularBooks = async () => {
   }
 }
 
+export const fetchCategories = async () => {
+  try {
+    const { data } = await api.get('/books/categories')
+    return data
+  } catch (error) {
+    throw new Error(`Failed to fetch categories: ${error}`)
+  }
+}
+
 export const fetchProfileData = async (userId: string) => {
   try {
     const { data } = await api.get(`/profile/${userId}`)
