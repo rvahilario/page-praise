@@ -24,23 +24,9 @@ export const Container = styled('div', {
 export const BookDetails = styled('div', {
   display: 'flex',
   gap: '$5',
+  maxHeight: '100%',
   img: {
     borderRadius: 4,
-  },
-
-  variants: {
-    isCompact: {
-      false: {
-        '> a': {
-          maxHeight: 152,
-        },
-      },
-      true: {
-        '> a': {
-          maxHeight: 94,
-        },
-      },
-    },
   },
 })
 

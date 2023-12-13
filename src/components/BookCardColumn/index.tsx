@@ -15,13 +15,27 @@ import { RatingStars } from '../RatingStars'
 type BookCardColumnProps = {
   book: BookWithAvgRating
   isCompact?: boolean
+  imgSize?: 'sm' | 'md' | 'lg'
 }
 
 const MAX_SUMMARY_LENGTH = 180 // characters
+const IMAGE_SIZE = {
+  height: {
+    sm: 94,
+    md: 134,
+    lg: 152,
+  },
+  width: {
+    sm: 64,
+    md: 98,
+    lg: 108,
+  },
+}
 
 export const BookCardColumn = ({
   book,
   isCompact = false,
+  imgSize = 'md',
 }: BookCardColumnProps) => {
   const {
     text: bookSummary,
@@ -31,12 +45,12 @@ export const BookCardColumn = ({
 
   return (
     <Container isCompact={isCompact}>
-      <BookDetails isCompact={isCompact}>
+      <BookDetails>
         {/* TODO: link to book page */}
         <Link href={`/explore`}>
           <BookImage
-            width={isCompact ? 64 : 108}
-            height={isCompact ? 94 : 152}
+            height={IMAGE_SIZE.height[imgSize]}
+            width={IMAGE_SIZE.width[imgSize]}
             alt={book.name}
             src={book.cover_url}
           />

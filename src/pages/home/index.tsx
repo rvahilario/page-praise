@@ -69,6 +69,7 @@ export const Home = () => {
             {popularBooks?.map((book) => (
               <BookCardColumn
                 key={`popular-${book.id}`}
+                imgSize="sm"
                 book={book}
                 isCompact
               />
