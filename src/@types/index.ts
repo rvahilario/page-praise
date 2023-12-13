@@ -1,4 +1,5 @@
-import { Book, Rating, User } from '@prisma/client'
+/* eslint-disable prettier/prettier */
+import { Book, CategoriesOnBooks, Category, Rating, User } from '@prisma/client'
 
 export type RatingWithBook = Rating & {
   book: Book
@@ -12,4 +13,25 @@ export type RatingWithUserAndBook = Rating &
 export type BookWithAvgRating = Book & {
   avgRating: number
   alreadyRead: boolean
+}
+
+export type ProfileRating = Rating & {
+  book: Book & {
+    categories: CategoriesOnBooks & {
+      category: Category
+    }[]
+  }
+}
+
+export type ProfileData = {
+  user: {
+    avatar_url: string
+    name: string
+    member_since: string
+  }
+  ratings: ProfileRating[]
+  readPages: number
+  ratedBooks: number
+  readAuthors: number
+  mostReadCategory?: string
 }

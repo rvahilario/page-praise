@@ -35,3 +35,12 @@ export const fetchPopularBooks = async () => {
     throw new Error(`Failed to fetch popular books: ${error}`)
   }
 }
+
+export const fetchProfileData = async (userId: string) => {
+  try {
+    const { data } = await api.get(`/profile/${userId}`)
+    return data
+  } catch (error) {
+    throw new Error(`Failed to fetch profile data: ${error}`)
+  }
+}

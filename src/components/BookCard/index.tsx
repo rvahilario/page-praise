@@ -34,8 +34,7 @@ export const BookCard = ({ rating, noUser = false }: BookCardProps) => {
       {!noUser && (
         <UserDetails>
           <section>
-            {/* TODO: link to profile */}
-            <Link href={`/profile`}>
+            <Link href={`/profile/${rating.user_id}`}>
               <Avatar src={rating.user.avatar_url!} alt={rating.user.name} />
             </Link>
             <div>
