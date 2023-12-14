@@ -1,6 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { Book, CategoriesOnBooks, Category, Rating, User } from '@prisma/client'
 
+export type RatingWithUser = Rating & {
+  user: User
+}
+
 export type RatingWithBook = Rating & {
   book: Book
 }
@@ -13,6 +17,13 @@ export type RatingWithUserAndBook = Rating &
 export type BookWithAvgRating = Book & {
   avgRating: number
   alreadyRead?: boolean
+}
+
+export type BookDetails = BookWithAvgRating & {
+  ratings: RatingWithUser[]
+  categories: (CategoriesOnBooks & {
+    category: Category
+  })[]
 }
 
 export type ProfileRating = Rating & {

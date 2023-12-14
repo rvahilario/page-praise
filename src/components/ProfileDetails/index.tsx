@@ -1,10 +1,4 @@
-import { ReactNode } from 'react'
-import {
-  Container,
-  DetailContainer,
-  ProfileDetailsWrapper,
-  UserInfo,
-} from './styles'
+import { Container, ProfileDetailsWrapper, UserInfo } from './styles'
 import { Heading, Text } from '../Typography'
 import { Avatar } from '../Avatar'
 import {
@@ -14,6 +8,7 @@ import {
   UserList,
 } from '@phosphor-icons/react'
 import { ProfileData } from '@/src/@types'
+import { ItemDetail } from '../ItemDetail'
 
 type ProfileDetailsProps = {
   profile: ProfileData
@@ -39,23 +34,23 @@ export const ProfileDetails = ({ profile }: ProfileDetailsProps) => {
       </UserInfo>
 
       <ProfileDetailsWrapper>
-        <DetailItem
+        <ItemDetail
           icon={<BookOpen />}
           info={profile.readPages}
           label="Pages Read"
         />
-        <DetailItem
+        <ItemDetail
           icon={<Books />}
           info={profile.ratedBooks}
           label="Reviewed Books"
         />
-        <DetailItem
+        <ItemDetail
           icon={<UserList />}
           info={profile.readAuthors}
           label="Read authors"
         />
         {profile?.mostReadCategory && (
-          <DetailItem
+          <ItemDetail
             icon={<BookmarkSimple />}
             info={profile.mostReadCategory}
             label="Most read category"
@@ -63,27 +58,5 @@ export const ProfileDetails = ({ profile }: ProfileDetailsProps) => {
         )}
       </ProfileDetailsWrapper>
     </Container>
-  )
-}
-
-type DetailItemProps = {
-  icon: ReactNode
-  info: string | number
-  label: string
-}
-
-const DetailItem = ({ icon, info, label }: DetailItemProps) => {
-  return (
-    <DetailContainer>
-      {icon}
-      <div>
-        <Heading size={'xs'} color="gray-200">
-          {info}
-        </Heading>
-        <Text size="sm" color="gray-300">
-          {label}
-        </Text>
-      </div>
-    </DetailContainer>
   )
 }

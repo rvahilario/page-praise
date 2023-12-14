@@ -30,14 +30,3 @@ export const ProfileDetailsWrapper = styled('div', {
   gap: 40,
   marginTop: 50,
 })
-
-export const DetailContainer = styled('div', {
-  display: 'flex',
-  gap: '$5',
-
-  svg: {
-    width: 32,
-    height: 32,
-    color: '$green100',
-  },
-})
