@@ -44,8 +44,11 @@ export const HeaderContainer = styled('header', {
     cursor: 'pointer',
     background: 'none',
     border: 'none',
-    borderRadius: '50%',
+    borderRadius: 4,
 
+    '&:hover': {
+      background: '$gray600',
+    },
     svg: {
       fontSize: 24,
     },

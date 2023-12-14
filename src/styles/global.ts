@@ -13,5 +13,12 @@ export const globalStyles = globalCss({
     '-webkit-font-smoothing': 'antialiased',
     maxWidth: '90rem',
     margin: '0 auto',
+    overflow: 'hidden',
+  },
+
+  'body[style]': {
+    margin: '0px auto !important',
+    position: 'static !important',
+    padding: 0,
   },
 })

@@ -10,6 +10,10 @@ export const Container = styled('section', {
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: '$4',
+
+    '> button': {
+      cursor: 'pointer',
+    },
   },
 
   '> section': {

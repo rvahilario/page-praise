@@ -26,7 +26,7 @@ export const LoginDialog = ({ children }: LoginDialogProps) => {
 
           <div>
             <Heading size={'xs'} color={'gray-200'} css={{ marginBottom: 40 }}>
-              Faça login para deixar sua avaliação
+              Log in to leave your review
             </Heading>
             <AuthButtons
               callbackUrl={

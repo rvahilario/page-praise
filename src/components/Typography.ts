@@ -2,6 +2,7 @@ import { styled } from '../styles'
 
 export const Text = styled('p', {
   lineHeight: '$base',
+  fontFamily: '$default',
 
   variants: {
     size: {
@@ -40,7 +41,9 @@ export const Text = styled('p', {
 
 export const Heading = styled('h2', {
   fontWeight: '$bold',
+  fontStyle: 'normal',
   lineHeight: '$short',
+  fontFamily: '$default',
 
   variants: {
     size: {

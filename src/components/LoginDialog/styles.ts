@@ -17,6 +17,7 @@ export const DialogContent = styled(Dialog.Content, {
   transform: 'translate(-50%, -50%)',
   padding: '56px 72px',
   borderRadius: 12,
+  zIndex: 9999,
 
   '> div': {
     maxWidth: 372,
@@ -35,4 +36,10 @@ export const DialogClose = styled(Dialog.Close, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  cursor: 'pointer',
+  borderRadius: 4,
+
+  '&:hover': {
+    background: '$gray600',
+  },
 })
