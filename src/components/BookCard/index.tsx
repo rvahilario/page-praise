@@ -15,6 +15,8 @@ import { useToggleShowMore } from '@/src/hooks/useToggleShowMore'
 import { RatingWithUserAndBook } from '@/src/@types'
 import { RatingStars } from '../RatingStars'
 import { useSelectedBook } from '@/src/hooks/useSelectedBook'
+import { formatDistanceToNow } from 'date-fns'
+import { enUS } from 'date-fns/locale'
 
 type BookCardProps = {
   rating: RatingWithUserAndBook
@@ -32,6 +34,11 @@ export const BookCard = ({ rating, noUser = false }: BookCardProps) => {
 
   const { handleShowBookNavbar } = useSelectedBook()
 
+  const distance = formatDistanceToNow(new Date(rating.created_at), {
+    addSuffix: true,
+    locale: enUS,
+  })
+
   return (
     <Container noUser={noUser}>
       {!noUser && (
@@ -43,7 +50,7 @@ export const BookCard = ({ rating, noUser = false }: BookCardProps) => {
             <div>
               <Text>{rating.user.name}</Text>
               <Text size="sm" color="gray-400">
-                Today{/* TODO: implements day distance */}
+                {distance}
               </Text>
             </div>
           </section>
@@ -52,7 +59,6 @@ export const BookCard = ({ rating, noUser = false }: BookCardProps) => {
       )}
 
       <BookDetails>
-        {/* TODO: link to book page */}
         <Link href={`/explore`} onClick={handleShowBookNavbar}>
           <BookImage
             width={108}
@@ -66,7 +72,7 @@ export const BookCard = ({ rating, noUser = false }: BookCardProps) => {
             {noUser && (
               <CompactDetails>
                 <Text size="sm" color="gray-300">
-                  Today{/* TODO: implements day distance */}
+                  {distance}
                 </Text>
                 <RatingStars value={rating.rate} />
               </CompactDetails>

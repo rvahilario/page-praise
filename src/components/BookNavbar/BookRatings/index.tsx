@@ -81,7 +81,7 @@ export const UserRatingCard = ({ rating, session }: UserRatingCardProps) => {
           <div>
             <Heading size="xs">{rating.user.name}</Heading>
             <Text size="sm" color="gray-400">
-              {distance.toString()}
+              {distance}
             </Text>
           </div>
         </section>
