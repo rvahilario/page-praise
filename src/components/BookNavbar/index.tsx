@@ -1,5 +1,6 @@
 import { X } from '@phosphor-icons/react'
 import { HeaderContainer, NavContainer, NavWrapper } from './styles'
+import { BookInfo } from './BookInfo'
 
 import { MOCK_BOOK } from '@/mocks'
 
@@ -21,7 +22,9 @@ export const BookNavbar = ({ isShow, handleShowClose }: BookNavbarProps) => {
             </button>
           </HeaderContainer>
 
-          <NavContainer>BOOK INFO</NavContainer>
+          <NavContainer>
+            <BookInfo book={book} />
+          </NavContainer>
         </NavWrapper>
       )}
     </>

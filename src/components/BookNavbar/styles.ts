@@ -15,7 +15,7 @@ export const NavWrapper = styled('nav', {
   maxWidth: 660,
   padding: '24px 48px',
 
-  backgroundColor: 'DarkSlateGrey',
+  backgroundColor: 'DarkSlateGrey', // TODO: change to theme
   transition: '.5s',
 
   variants: {
