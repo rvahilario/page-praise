@@ -4,7 +4,7 @@ import { CaretLeft, CaretRight } from '@phosphor-icons/react'
 
 type LinkProps = Omit<ComponentProps<typeof Container>, 'href'> & {
   text: string
-  href: string
+  href?: string
   onClick?: () => void
   withoutIcon?: boolean
 }
@@ -20,7 +20,7 @@ export const LinkNavigation = ({
   return (
     <Container
       {...props}
-      href={href}
+      href={href || ''}
       as={onClick ? 'button' : undefined}
       iconSide={iconSide}
       onClick={onClick}

@@ -12,6 +12,7 @@ import { Heading, Text } from '../Typography'
 import { useToggleShowMore } from '@/src/hooks/useToggleShowMore'
 import { BookWithAvgRating } from '@/src/@types'
 import { RatingStars } from '../RatingStars'
+import { useSelectedBook } from '@/src/hooks/useSelectedBook'
 
 type BookCardColumnProps = {
   book: BookWithAvgRating
@@ -45,12 +46,14 @@ export const BookCardColumn = ({
     isShowingMore,
   } = useToggleShowMore(book.summary, MAX_SUMMARY_LENGTH)
 
+  const { handleShowBookNavbar } = useSelectedBook()
+
   return (
     <Container isCompact={isCompact}>
       {book?.alreadyRead && <ReadBadge>READ</ReadBadge>}
       <BookDetails>
         {/* TODO: link to book page */}
-        <Link href={`/explore`}>
+        <Link href={`/explore`} onClick={handleShowBookNavbar}>
           <BookImage
             height={IMAGE_SIZE.height[imgSize]}
             width={IMAGE_SIZE.width[imgSize]}

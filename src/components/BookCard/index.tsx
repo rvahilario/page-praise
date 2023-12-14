@@ -14,6 +14,7 @@ import { Avatar } from '../Avatar'
 import { useToggleShowMore } from '@/src/hooks/useToggleShowMore'
 import { RatingWithUserAndBook } from '@/src/@types'
 import { RatingStars } from '../RatingStars'
+import { useSelectedBook } from '@/src/hooks/useSelectedBook'
 
 type BookCardProps = {
   rating: RatingWithUserAndBook
@@ -28,6 +29,8 @@ export const BookCard = ({ rating, noUser = false }: BookCardProps) => {
     toggleShowMore,
     isShowingMore,
   } = useToggleShowMore(rating.book.summary, MAX_SUMMARY_LENGTH)
+
+  const { handleShowBookNavbar } = useSelectedBook()
 
   return (
     <Container noUser={noUser}>
@@ -50,7 +53,7 @@ export const BookCard = ({ rating, noUser = false }: BookCardProps) => {
 
       <BookDetails>
         {/* TODO: link to book page */}
-        <Link href={`/explore`}>
+        <Link href={`/explore`} onClick={handleShowBookNavbar}>
           <BookImage
             width={108}
             height={152}
