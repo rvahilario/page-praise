@@ -3,6 +3,7 @@ import { HeaderContainer, NavContainer, NavWrapper } from './styles'
 import { BookInfo } from './BookInfo'
 
 import { MOCK_BOOK } from '@/mocks'
+import { BookRatings } from './BookRatings'
 
 type BookNavbarProps = {
   isShow: boolean
@@ -24,6 +25,7 @@ export const BookNavbar = ({ isShow, handleShowClose }: BookNavbarProps) => {
 
           <NavContainer>
             <BookInfo book={book} />
+            <BookRatings ratings={book.ratings} />
           </NavContainer>
         </NavWrapper>
       )}

@@ -56,30 +56,5 @@ export const NavContainer = styled('div', {
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'space-between',
   minHeight: '100%',
-
-  '> button': {
-    fontSize: '1.125rem',
-    marginTop: 30,
-    backgroundColor: '$green500',
-    border: 0,
-    color: '$white',
-    borderRadius: 8,
-    padding: '1.1rem',
-    cursor: 'pointer',
-    width: '100%',
-    fontWeight: 700,
-    lineHeight: '160%',
-
-    '&:disabled': {
-      opacity: 0.6,
-      cursor: 'not-allowed',
-    },
-
-    '&:not(:disabled):hover': {
-      transition: '0.5s',
-      backgroundColor: '$green300',
-    },
-  },
 })
