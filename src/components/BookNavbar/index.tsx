@@ -25,7 +25,7 @@ export const BookNavbar = ({ isShow, handleShowClose }: BookNavbarProps) => {
 
           <NavContainer>
             <BookInfo book={book} />
-            <BookRatings ratings={book.ratings} />
+            <BookRatings bookId={book.id} ratings={book.ratings} />
           </NavContainer>
         </NavWrapper>
       )}

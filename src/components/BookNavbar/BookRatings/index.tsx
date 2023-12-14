@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { Fragment, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { Session } from 'next-auth'
 import Link from 'next/link'
@@ -9,15 +11,17 @@ import { Avatar } from '../../Avatar'
 import { RatingStars } from '../../RatingStars'
 import { formatDistanceToNow } from 'date-fns'
 import { enUS } from 'date-fns/locale'
-import { Fragment } from 'react'
 import { LoginDialog } from '../../LoginDialog'
+import { RatingForm } from '../RatingForm'
 
 type BookRatingsProps = {
   ratings: RatingWithUser[]
+  bookId: string
 }
 
-export const BookRatings = ({ ratings }: BookRatingsProps) => {
+export const BookRatings = ({ bookId, ratings }: BookRatingsProps) => {
   const { status, data: session } = useSession()
+  const [showForm, setShowForm] = useState(false)
 
   const isAuthenticated = status === 'authenticated'
   const RatingWrapper = isAuthenticated ? Fragment : LoginDialog
@@ -29,21 +33,23 @@ export const BookRatings = ({ ratings }: BookRatingsProps) => {
     return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
   })
 
+  const handleRate = () => {
+    if (!isAuthenticated) return
+    setShowForm(!showForm)
+  }
+
   return (
     <Container>
       <header>
         <Text>Ratings</Text>
         {canRate && (
           <RatingWrapper>
-            <LinkNavigation
-              withoutIcon
-              onClick={() => console.log('open rating form')}
-              text="Rate"
-            />
+            <LinkNavigation withoutIcon onClick={handleRate} text="Rate" />
           </RatingWrapper>
         )}
       </header>
       <section>
+        {showForm && <RatingForm bookId={bookId} onCancel={handleRate} />}
         {sortedRatingsByDate &&
           ratings.map((rating) => (
             <UserRatingCard key={rating.id} rating={rating} session={session} />
