@@ -1,11 +1,10 @@
-import { Book } from '@prisma/client'
 import { ReactNode, createContext, useState } from 'react'
 import { BookNavbar } from '../components/BookNavbar'
+import { BookWithAvgRating } from '../@types'
 
 type SelectedBookContext = {
-  selectedBook: any | null
-  clearSelectedBook: () => void
-  selectBook: (book: any) => void
+  selectedBook: BookWithAvgRating | null
+  selectBook: (book: BookWithAvgRating) => void
   handleShowBookNavbar: () => void
 }
 
@@ -15,14 +14,16 @@ export const SelectedBookContext = createContext<SelectedBookContext | null>(
 
 export const SelectedBookProvider = ({ children }: { children: ReactNode }) => {
   const [showBookNav, setShowBookNav] = useState(false)
+  const [selectedBook, setSelectedBook] = useState<BookWithAvgRating | null>(
+    null,
+  )
 
   function handleShowBookNavbar() {
+    if (showBookNav) clearSelectedBook()
     setShowBookNav(!showBookNav)
   }
 
-  const [selectedBook, setSelectedBook] = useState<Book | null>(null)
-
-  function selectBook(book: Book) {
+  function selectBook(book: BookWithAvgRating) {
     setSelectedBook(book)
   }
 
@@ -33,7 +34,6 @@ export const SelectedBookProvider = ({ children }: { children: ReactNode }) => {
   return (
     <SelectedBookContext.Provider
       value={{
-        clearSelectedBook,
         selectBook,
         selectedBook,
         handleShowBookNavbar,

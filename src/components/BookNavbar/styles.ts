@@ -5,6 +5,7 @@ export const NavWrapper = styled('nav', {
   right: 0,
   top: 0,
   zIndex: 100,
+  overflowY: 'auto',
 
   display: 'flex',
   flexDirection: 'column',
@@ -15,7 +16,7 @@ export const NavWrapper = styled('nav', {
   maxWidth: 660,
   padding: '24px 48px',
 
-  backgroundColor: 'DarkSlateGrey', // TODO: change to theme
+  backgroundColor: '$gray800',
   transition: '.5s',
 
   variants: {

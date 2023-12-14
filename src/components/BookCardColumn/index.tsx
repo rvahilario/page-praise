@@ -39,21 +39,24 @@ export const BookCardColumn = ({
   isCompact = false,
   imgSize = 'md',
 }: BookCardColumnProps) => {
-  console.log('book', book)
   const {
     text: bookSummary,
     toggleShowMore,
     isShowingMore,
   } = useToggleShowMore(book.summary, MAX_SUMMARY_LENGTH)
+  const { selectBook, handleShowBookNavbar } = useSelectedBook()
 
-  const { handleShowBookNavbar } = useSelectedBook()
+  const onOpenBookNavbar = () => {
+    selectBook(book)
+    handleShowBookNavbar()
+  }
 
   return (
     <Container isCompact={isCompact}>
       {book?.alreadyRead && <ReadBadge>READ</ReadBadge>}
       <BookDetails>
         {/* TODO: link to book page */}
-        <Link href={`/explore`} onClick={handleShowBookNavbar}>
+        <Link href={`/explore`} onClick={onOpenBookNavbar}>
           <BookImage
             height={IMAGE_SIZE.height[imgSize]}
             width={IMAGE_SIZE.width[imgSize]}
