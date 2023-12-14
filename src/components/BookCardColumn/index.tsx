@@ -55,7 +55,6 @@ export const BookCardColumn = ({
     <Container isCompact={isCompact}>
       {book?.alreadyRead && <ReadBadge>READ</ReadBadge>}
       <BookDetails>
-        {/* TODO: link to book page */}
         <Link href={`/explore`} onClick={onOpenBookNavbar}>
           <BookImage
             height={IMAGE_SIZE.height[imgSize]}

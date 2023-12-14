@@ -29,7 +29,6 @@ export const Home = () => {
     return <div>Loading...</div>
   }
 
-  // TODO: implement error handling to other fetches
   if (isError || !ratings) {
     return <div>Error fetching latest ratings.</div>
   }
