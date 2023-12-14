@@ -7,6 +7,8 @@ import { LinkNavigation } from '../../LinkNavigation'
 import { RatingWithUser } from '@/src/@types'
 import { Avatar } from '../../Avatar'
 import { RatingStars } from '../../RatingStars'
+import { formatDistanceToNow } from 'date-fns'
+import { enUS } from 'date-fns/locale'
 
 type BookRatingsProps = {
   ratings: RatingWithUser[]
@@ -50,7 +52,10 @@ type UserRatingCardProps = {
 }
 
 export const UserRatingCard = ({ rating, session }: UserRatingCardProps) => {
-  const distance = new Date(rating.created_at)
+  const distance = formatDistanceToNow(new Date(rating.created_at), {
+    addSuffix: true,
+    locale: enUS,
+  })
   const isOwner = session?.user?.id === rating.user_id
 
   return (
