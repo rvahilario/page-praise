@@ -9,13 +9,18 @@ import { Avatar } from '../../Avatar'
 import { RatingStars } from '../../RatingStars'
 import { formatDistanceToNow } from 'date-fns'
 import { enUS } from 'date-fns/locale'
+import { Fragment } from 'react'
+import { LoginDialog } from '../../LoginDialog'
 
 type BookRatingsProps = {
   ratings: RatingWithUser[]
 }
 
 export const BookRatings = ({ ratings }: BookRatingsProps) => {
-  const { data: session } = useSession()
+  const { status, data: session } = useSession()
+
+  const isAuthenticated = status === 'authenticated'
+  const RatingWrapper = isAuthenticated ? Fragment : LoginDialog
 
   // User logged in can evaluate only if they haven't previously reviewed the book
   const canRate = ratings.every((x) => x.user_id !== session?.user?.id)
@@ -29,11 +34,13 @@ export const BookRatings = ({ ratings }: BookRatingsProps) => {
       <header>
         <Text>Ratings</Text>
         {canRate && (
-          <LinkNavigation
-            withoutIcon
-            onClick={() => console.log('open rating form')}
-            text="Rate"
-          />
+          <RatingWrapper>
+            <LinkNavigation
+              withoutIcon
+              onClick={() => console.log('open rating form')}
+              text="Rate"
+            />
+          </RatingWrapper>
         )}
       </header>
       <section>
